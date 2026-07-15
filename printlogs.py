@@ -1,3 +1,3 @@
-import res.functions as functions
+import functions as functions
 
 print(functions.logs())
