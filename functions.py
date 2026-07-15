@@ -3,7 +3,7 @@ import json
 
 def train(number):
     guess1 = random.randint(2, 11)
-    with open("llm/logs.json", "r") as file:
+    with open("logs.json", "r") as file:
         # protocol for no prior data
         if file.read() == "[]":
             final_guess = guess1
@@ -13,7 +13,7 @@ def train(number):
             elif question_if_correct == "n":
                 correct = False
             file.seek(0)
-            with open("llm/logs.json", "r") as file:
+            with open("logs.json", "r") as file:
                 data = json.load(file)
             # safety code for when something else then "y" or "n" is the input
             try:
@@ -30,7 +30,7 @@ def train(number):
                 })
             # end of safety code
             file.seek(0)
-            with open("llm/logs.json", "w") as file:
+            with open("logs.json", "w") as file:
                 json.dump(data, file)
         # end of protocol for no data
         else:
@@ -62,7 +62,7 @@ def train(number):
                     })
                 # end of safety code
                 file.seek(0)
-                with open("llm/logs.json", "w") as file:
+                with open("logs.json", "w") as file:
                     file.seek(0)
                     json.dump(data, file)
             for item in selection:
@@ -89,7 +89,7 @@ def train(number):
                             })
                         # end of safety code
                         file.seek(0)
-                        with open("llm/logs.json") as file:
+                        with open("logs.json") as file:
                             json.dump(data, file)
                     # safety code for when something else then "y" or "n" is the input
                     try:
@@ -105,7 +105,7 @@ def train(number):
                             "correct": None
                         })
                     # end of safety code
-                    with open("llm/logs.json", "w") as file:
+                    with open("logs.json", "w") as file:
                         json.dump(data, file)
 
 def logs():
@@ -117,7 +117,7 @@ def logs():
 def addlogstollm(logsToadd):
     with open(logsToadd, "r") as file:
         newlogs = json.load(file)
-    with open("llm/logs.json", "r") as file:
+    with open("logs.json", "r") as file:
         file.seek(0)
         mainlogs = json.load(file)
     print(f"""
