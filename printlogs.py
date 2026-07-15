@@ -1,3 +1,3 @@
-import functions as functions
+import functions
 
 print(functions.logs())
